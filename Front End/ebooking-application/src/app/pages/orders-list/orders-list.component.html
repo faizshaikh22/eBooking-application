@@ -1,0 +1,83 @@
+<app-navbar></app-navbar>
+
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row" style="margin-top: 25px;">
+            <div class="col-md-12">
+
+                <h1 class="mat-h1">Orders List</h1>
+
+                <mat-table [dataSource]="ordersList">
+                    <ng-container matColumnDef="orderId">
+                        <mat-header-cell *matHeaderCellDef>Order ID</mat-header-cell>
+                        <mat-cell *matCellDef="let order">{{ order.orderId }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="orderStatus">
+                        <mat-header-cell *matHeaderCellDef>Order Status</mat-header-cell>
+                        <mat-cell *matCellDef="let order">{{ order.orderStatus }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="orderDate">
+                        <mat-header-cell *matHeaderCellDef>Order Date</mat-header-cell>
+                        <mat-cell *matCellDef="let order">{{ order.orderDate | date }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ticketCategory">
+                        <mat-header-cell *matHeaderCellDef>Ticket Category</mat-header-cell>
+                        <mat-cell *matCellDef="let order">{{ order.ticketCategory }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ticketPrice">
+                        <mat-header-cell *matHeaderCellDef>Ticket Price</mat-header-cell>
+                        <mat-cell *matCellDef="let order">{{ order.ticketPrice }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ticketQuantity">
+                        <mat-header-cell *matHeaderCellDef>Ticket Quantity</mat-header-cell>
+                        <mat-cell *matCellDef="let order">{{ order.ticketQuantity }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="promoCodeDiscount">
+                        <mat-header-cell *matHeaderCellDef>Promo Code Discount</mat-header-cell>
+                        <mat-cell *matCellDef="let order">{{ order.promoCodeDiscount }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="eventId">
+                        <mat-header-cell *matHeaderCellDef>Event ID</mat-header-cell>
+                        <mat-cell *matCellDef="let order">{{ order.eventId }}</mat-cell>
+                    </ng-container>
+
+                    <!-- <ng-container matColumnDef="eventName">
+                        <mat-header-cell *matHeaderCellDef>Event Name</mat-header-cell>
+                        <mat-cell *matCellDef="let order">{{ eventName }}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="eventDate">
+                        <mat-header-cell *matHeaderCellDef>Event Date</mat-header-cell>
+                        <mat-cell *matCellDef="let order">{{ eventDate | date }}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="eventDescription">
+                        <mat-header-cell *matHeaderCellDef>Event Description</mat-header-cell>
+                        <mat-cell *matCellDef="let order">{{ eventDescription }}</mat-cell>
+                    </ng-container> -->
+
+                    <ng-container matColumnDef="userId">
+                        <mat-header-cell *matHeaderCellDef>User ID</mat-header-cell>
+                        <mat-cell *matCellDef="let order">{{ order.userId }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="delete">
+                        <mat-header-cell *matHeaderCellDef>Cancel Order</mat-header-cell>
+                        <mat-cell *matCellDef="let order">
+                            <button mat-raised-button color="warn" (click)="deleteOrder(order.orderId)">Cancel</button>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+
+            </div>
+        </div>
+    </div>
+</div>

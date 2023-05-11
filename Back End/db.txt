@@ -1,0 +1,30 @@
+1. Event
+-event_id(primary key)
+-event_name
+-event_description
+-event_date
+-event_location
+-event_category
+-event_status
+-ticket_price
+
+2. user
+-user_id(primary key)
+-user_name
+-user_email
+-user_password
+
+3. Promo Code
+-promo_code_id(primary key)
+-promo_code_name
+-promo_code_discount
+-event_id(foreign key)
+
+4. order
+-order_id(primary key)
+-order_status
+-ticket_quantity
+-ticket_category_id
+-user_id(foreign key)
+-promo_code_id(foreign key)
+-event_id(foreign key)

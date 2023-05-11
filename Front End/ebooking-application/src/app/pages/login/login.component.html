@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row" style="margin-top: 25px;">
+            <div class="col-md-6 offset-md-3">
+
+                <div class="container text-center">
+                    <img src="../../../assets/login.png" height="80px" width="80px">
+                </div>
+
+                <h1 class="text-center">Login</h1>
+
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+                    <mat-form-field class="full-width" appearance="outline">
+                      <mat-label>Email</mat-label>
+                      <input matInput placeholder="Enter Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" required="">
+                      <mat-hint>Enter valid Email</mat-hint>
+                    </mat-form-field>
+                  
+                    <!-- Password Field -->
+                    <mat-form-field class="full-width" appearance="outline" style="margin-top: 5px;">
+                      <mat-label>Password</mat-label>
+                      <input type="password" matInput placeholder="Enter Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" required="">
+                    </mat-form-field>
+                  
+                    <!-- Buttons -->
+                    <div class="container text-center">
+                      <button type="submit" mat-raised-button color="primary" [disabled]="!isValid()">Login</button>
+                      <button style="margin-left: 20px;" mat-raised-button color="warn" routerLink="/signup">Sign Up</button>
+                    </div>
+                </form>
+                  
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+<app-navbar></app-navbar>
+
+<div class = "bootstrap-wrapper">
+    <div class = "container">
+        <div class = "row" style="margin-top: 25px;">
+            <div class = "col-md-6 offset-md-3">
+
+                <div class = "container text-center">
+                    <img src="../../../assets/event.png" height="100px" width="100px">
+                </div>
+
+                <h1 class = "text-center">Create Event</h1>
+
+                <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+                    <!-- Event Category Field -->
+
+                    <mat-form-field class="full-width" appearance="outline" style="width: 540px;">
+                        <mat-label>Event Category</mat-label>
+                        <mat-select name = "eventCategory" formControlName = "eventCategory" placeholder="Event Category" required="">
+                          <mat-option value="sports">Sports</mat-option>
+                          <mat-option value="music">Music</mat-option>
+                          <mat-option value="culture">Arts and Culture</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <!-- Event Name -->
+
+                    <mat-form-field class="full-width" appearance="outline" style="width: 540px;">
+                        <mat-label>Event Name</mat-label>
+                        <input name = "eventName" formControlName = "eventName" matInput placeholder="Enter Event Name" required="">
+                    </mat-form-field>
+
+                    <!-- Event Description -->
+
+                    <mat-form-field class="full-width" appearance="outline" style="width: 540px;">
+                        <mat-label>Event Description</mat-label>
+                        <textarea name = "eventDescription" formControlName = "eventDescription" matInput placeholder="Enter Event Description" required=""></textarea>
+                    </mat-form-field>
+
+                    <!-- Event Date -->
+
+                    <mat-form-field appearance="outline" class="full-width" style="width: 540px;">
+                        <mat-label>Choose a date</mat-label>
+                        <input name = "eventDate" formControlName = "eventDate" matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" required="">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+                    <!-- Event Location -->
+
+                    <mat-form-field class="full-width" appearance="outline" style="width: 540px;">
+                        <mat-label>Event Location</mat-label>
+                        <input name = "eventLocation" formControlName = "eventLocation" matInput placeholder="Enter Event Location" required="">
+                    </mat-form-field>
+
+                    <!-- eventPrice -->
+
+                    <mat-form-field class="full-width" appearance="outline" style="width: 540px;">
+                        <mat-label>Event Price</mat-label>
+                        <input name = "eventLocation" formControlName = "eventPrice" matInput placeholder="Enter Event Ticket Price" pattern="^[0-9]*$" required="">
+                    </mat-form-field>
+
+                    <!-- Event Status -->
+                    <mat-form-field class="full-width" appearance="outline" style="width: 540px;">
+                        <mat-label>Event Status</mat-label>
+                        <mat-select name = "eventStatus" formControlName = "eventStatus" placeholder="Event Status" required="">
+                          <mat-option value="open">Open for booking</mat-option>
+                          <mat-option value="closed">Closed for booking</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+
+                    <!-- Buttons -->
+                    <div class="container text-center">
+                        <button type = "submit" [disabled]="!form.valid" value="check this" mat-raised-button color = "primary" >Create</button>
+                        <button mat-raised-button color = "primary" style="margin-left: 20px;" routerLink="/admin">Admin Page</button>
+                        <button type="reset" style="margin-left: 20px;" mat-raised-button color = "warn">Clear</button>
+                    </div>
+                    
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

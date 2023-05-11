@@ -1,0 +1,88 @@
+<app-navbar></app-navbar>
+
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row" style="margin-top: 25px;">
+      <div class="col-md-6 offset-md-3">
+
+        <div class="container text-center">
+          <img src="../../../assets/order.png" height="85px" width="80px">
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+          <mat-form-field class="full-width" appearance="outline" style="width: 540px;">
+            <mat-label>Event Category</mat-label>
+            <mat-select name="eventCategory" formControlName="eventCategory" placeholder="Event Category">
+              <mat-option value="sports">Sports</mat-option>
+              <mat-option value="music">Music</mat-option>
+              <mat-option value="culture">Arts and Culture</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline" style="width: 540px;">
+            <mat-label>Event Name</mat-label>
+            <mat-select matinput="" formControlName="eventName" (selectionChange)="onEventNameSelected($event)">
+              <mat-option *ngFor="let event of e1" [value]="event.eventName">{{ event.eventName }} -
+                ₹{{event.eventPrice}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-card *ngIf="selectedEvent">
+            <mat-card-header>
+              <mat-card-title>{{ selectedEvent.eventName }}</mat-card-title>
+              <mat-card-subtitle>{{ selectedEvent.eventDate | date:'medium' }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{ selectedEvent.eventDescription }}</p>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-form-field class="full-width" appearance="outline" style="width: 540px; margin-top: 15px;">
+            <mat-label>Ticket Category</mat-label>
+            <mat-select formControlName="ticketCategory">
+              <mat-option value="first">First</mat-option>
+              <mat-option value="second">Second</mat-option>
+              <mat-option value="third">Third</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline" style="width: 540px;">
+            <mat-label>Ticket Quantity</mat-label>
+            <mat-select name="ticketQuantity" formControlName="ticketQuantity" placeholder="Ticket Quantity">
+              <mat-option value=1>1</mat-option>
+              <mat-option value=2>2</mat-option>
+              <mat-option value=3>3</mat-option>
+              <mat-option value=4>4</mat-option>
+              <mat-option value=5>5</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline" style="width: 540px;">
+            <mat-label>Discount</mat-label>
+            <mat-select name="promoCodeDiscount" formControlName="promoCodeDiscount" placeholder="Promo code discount">
+              <mat-option value=0>None</mat-option>
+              <mat-option value=10>SONATA10</mat-option>
+              <mat-option value=30>SONATA30</mat-option>
+              <mat-option value=50>SONATA50</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-card class="full-width" style="width: 540px;">
+            <mat-card-content class="full-width" style="text-align: center;">
+              Ticket Price: ₹{{ form.controls['ticketPrice'].value|number:'1.0-0'}}<br>
+              Payment Type : <b>COD</b>
+            </mat-card-content>
+          </mat-card>
+
+          <div class="container text-center" style="margin-top: 15px;">
+            <button type="submit" mat-raised-button color="primary">Place Order</button>
+            <button type="reset" style="margin-left: 20px;" mat-raised-button color="basic">Clear</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

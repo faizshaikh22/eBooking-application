@@ -1,0 +1,8 @@
+<app-navbar></app-navbar>
+<h1 class="mat-h1 text-center" style="margin-top: 10px; font-weight: bold;">User Operations</h1>
+<div class="container">
+    <div class="button-container">
+        <button mat-raised-button color="primary" routerLink="/order">Book Event</button>
+        <button mat-raised-button color="primary" [routerLink]="'/orders/' + userId">View Orders</button>
+    </div>
+</div>

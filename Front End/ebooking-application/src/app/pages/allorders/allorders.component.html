@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+
+<mat-table [dataSource]="o1" class="mat-elevation-z8">
+  <!-- Order Id column -->
+  <ng-container matColumnDef="orderId">
+    <mat-header-cell *matHeaderCellDef> Order Id </mat-header-cell>
+    <mat-cell *matCellDef="let order"> {{ order.orderId }} </mat-cell>
+  </ng-container>
+
+  <!-- Event Id column -->
+  <ng-container matColumnDef="eventId">
+    <mat-header-cell *matHeaderCellDef> Event Id </mat-header-cell>
+    <mat-cell *matCellDef="let order"> {{ order.eventId }} </mat-cell>
+  </ng-container>
+
+  <!-- User Id column -->
+  <ng-container matColumnDef="userId">
+    <mat-header-cell *matHeaderCellDef> User Id </mat-header-cell>
+    <mat-cell *matCellDef="let order"> {{ order.userId }} </mat-cell>
+  </ng-container>
+
+  <!-- Order Status Column -->
+  <ng-container matColumnDef="orderStatus">
+    <mat-header-cell *matHeaderCellDef> Order Status </mat-header-cell>
+    <mat-cell *matCellDef="let order"> {{ order.orderStatus }} </mat-cell>
+  </ng-container>
+
+  <!-- Order Date Column -->
+  <ng-container matColumnDef="orderDate">
+    <mat-header-cell *matHeaderCellDef> Order Date </mat-header-cell>
+    <mat-cell *matCellDef="let order"> {{ order.orderDate | date }} </mat-cell>
+  </ng-container>
+
+  <!-- Ticket Category Column -->
+  <ng-container matColumnDef="ticketCategory">
+    <mat-header-cell *matHeaderCellDef> Ticket Category </mat-header-cell>
+    <mat-cell *matCellDef="let order"> {{ order.ticketCategory }} </mat-cell>
+  </ng-container>
+
+  <!-- Ticket Price Column -->
+  <ng-container matColumnDef="ticketPrice">
+    <mat-header-cell *matHeaderCellDef> Total Price </mat-header-cell>
+    <mat-cell *matCellDef="let order"> ₹{{ order.ticketPrice}} </mat-cell>
+  </ng-container>
+
+  <!-- Ticket Quantity Column -->
+  <ng-container matColumnDef="ticketQuantity">
+    <mat-header-cell *matHeaderCellDef> Ticket Quantity </mat-header-cell>
+    <mat-cell *matCellDef="let order"> {{ order.ticketQuantity }} </mat-cell>
+  </ng-container>
+
+  <!-- Promo Code Discount Column -->
+  <ng-container matColumnDef="promoCodeDiscount">
+    <mat-header-cell *matHeaderCellDef> Promo Code Discount </mat-header-cell>
+    <mat-cell *matCellDef="let order"> {{ order.promoCodeDiscount}}% </mat-cell>
+  </ng-container>
+
+  <!-- Table Rows -->
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<div class="text-center">
+  <button mat-raised-button color="primary" routerLink="/admin">Admin Page</button>
+</div>

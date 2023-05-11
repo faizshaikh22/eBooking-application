@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+
+<div class = "bootstrap-wrapper">
+    <div class = "container">
+        <div class = "row" style="margin-top: 25px;">
+            <div class = "col-md-6 offset-md-3">
+
+                <div class = "container text-center">
+                    <img src="../../../assets/signup-logo.png" height="80px" width="80px">
+                </div>
+
+                <h1 class = "text-center">Register Here</h1>
+
+                <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+                    <!-- Username Field -->
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>User Name</mat-label>
+                        <input name = "userName" formControlName = "userName" matInput placeholder="Enter Username" pattern="^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required="">
+                        <mat-hint>Username should be unique</mat-hint>
+                    </mat-form-field>
+
+                    <!-- Password Field -->
+                    <mat-form-field class="full-width" appearance="outline" style="margin-top: 10px;">
+                        <mat-label>Password</mat-label>
+                        <input name = "userPassword" formControlName = "userPassword" type = "password" matInput placeholder="Enter Password" pattern="(.|\s)*\S(.|\s)*" required="">
+                    </mat-form-field>
+
+                    <!-- User Email -->
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label type = "Email">Email</mat-label>
+                        <input name = "userEmail" formControlName = "userEmail" matInput placeholder="Enter Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required="">
+                    </mat-form-field>
+
+                    <!-- User Phone Number -->
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label type = "Number">Phone Number</mat-label>
+                        <input name = "contactNumber" formControlName = "contactNumber" matInput placeholder="Enter Phone Number" pattern="[6789][0-9]{9}" maxlength="10" required="">
+                    </mat-form-field>
+
+                    <!-- Buttons -->
+                    <div class="container text-center">
+                        <button type = "submit" [disabled]="!form.valid" value="check this" mat-raised-button color = "primary">Register</button>
+                        <button type = "reset" style="margin-left: 20px;" mat-raised-button color = "basic">Clear</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

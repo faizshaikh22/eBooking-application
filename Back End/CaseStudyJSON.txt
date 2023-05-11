@@ -1,0 +1,29 @@
+{
+	"orderId" : 4,
+  	"orderStatus" : "active",
+  	"orderDate" : "2023-04-15",
+  	"ticketCategory" : "second",
+  	"ticketPrice" : 150,
+  	"ticketQuantity" : 3,
+  	"userId" : 7,
+  	"promoCodeDiscount" : 20,
+  	"eventId" : 2
+}
+
+{
+	"userId" : 1,
+  	"userName" : "faiz",
+  	"userEmail" : "faiz.shaikh@gmail.com",
+  	"contactNumber" : "9876543210",
+  	"userPassword" : "qwerty123"
+}
+
+{
+	"eventId" : 4,
+  	"eventCategory" : "mma",
+  	"eventName" : "UFC",
+  	"eventDescription" : "UFC 218",
+  	"eventDate" : "2021-04-23",
+  	"eventLocation" : "NY",
+  	"eventStatus" : "online"
+}

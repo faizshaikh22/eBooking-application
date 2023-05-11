@@ -1,0 +1,95 @@
+IMP - @CrossOrigin(origins="http://localhost:4200")
+Add this to the controller class
+
+1. Create the Class Interface
+
+export interface OrderIntf {
+    orderId : number;
+    userId : number;
+    promoCodeDiscount : number;
+    eventId : number;
+    ticketPrice : number;
+}
+
+2. Create the Class Service - (ng g s orders)
+
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class OrdersService {
+  private baseurl = "http://localhost:8909/orders";
+  private posturl = "http://localhost:8909/orders";
+  constructor(private http : HttpClient) {}
+
+  getOrders() : Observable<any[]>{
+    return this.http.get<any[]>(this.baseurl);
+  }
+
+  createOrder(orders : Object) : Observable<Object>{
+    return this.http.post(this.posturl, orders);
+  }
+}
+
+3. Create Class Component (ng s c orders)
+
+########orders.component.ts############
+
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { OrderIntf } from '../OrderIntf';
+import { OrdersService } from '../orders.service';
+
+@Component({
+  selector: 'app-orders',
+  templateUrl: './orders.component.html',
+  styleUrls: ['./orders.component.css']
+})
+export class OrdersComponent implements OnInit{
+  form !: any;
+  order!:OrderIntf;
+
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      orderId : new FormControl(),
+      userId : new FormControl(),
+      promoCodeDiscount : new FormControl(),
+      eventId : new FormControl(),
+      ticketPrice : new FormControl()
+    })
+  }
+constructor(private service:OrdersService){}
+
+  addSave(){
+    this.service.createOrder(this.order)
+    .subscribe(data=>console.log(data));
+  }
+
+  onSubmit(o:any){
+    console.log(o);
+    this.order=o;
+    this.addSave();
+  }
+   
+}
+
+################orders.componet.html#################
+
+<p>orders works!</p>
+<div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+        Order ID : <input type="text" name="orderId" formControlName = "orderId"><br>
+        User ID :<input type="text" name = "userId" formControlName = "userId"><br>
+        Promo Code Discount : <select name = "promoCodeDiescount" formControlName = "promoCodeDiscount">
+            <option value="10">SONATA10</option>
+            <option value="20">SONATA20</option>
+            <option value="30">SONATA30</option>
+        </select><br>
+        Event ID : <input type="text" name = "eventId" formControlName = "eventId"><br>
+        Ticket Price : <input type="text" name = "ticketPrice" formControlName = "ticketPrice"><br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
